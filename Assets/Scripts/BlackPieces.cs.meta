@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 601afb3501cd39348bde64fe07f96f47
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - parent: {instanceID: 0}
+  - flag: {fileID: 6020797870797604975, guid: ea336d6ccb785f84782a238e9e10c270, type: 3}
+  - privates: {fileID: 372716031690072903, guid: 8a77a7fd4c01f444ab0c87aea213abae, type: 3}
+  - spy: {fileID: 1480558786666549265, guid: 2f369b425acb87f44a4c298db1cbbed9, type: 3}
+  - sergeant: {fileID: 1820227591098216939, guid: 47a7fee40ebfd284a94da35ad8137a91, type: 3}
+  - seclieu: {fileID: 9188759057381413905, guid: ef8bc1264779ad4428db25a137594a87, type: 3}
+  - firstlieu: {fileID: 4259827146745297542, guid: 553d8a40f8eb6614abbf1c024242e71f, type: 3}
+  - capt: {fileID: 4709752127469759379, guid: 3e218a3f0a334d643aa4fd713b8cdb08, type: 3}
+  - major: {fileID: 3067013982653985691, guid: 6905a37dce7bb6f4aba199548f55bf22, type: 3}
+  - lcol: {fileID: 4430060860026834077, guid: 223547886618bd64aaa62d05475d14bb, type: 3}
+  - col: {fileID: 9163360100648026748, guid: 3e68f19daafa1ca4fabe9fc34bd4813c, type: 3}
+  - gen1: {fileID: 3912106739476030705, guid: 449b11583514af346a12ba1d91506651, type: 3}
+  - gen2: {fileID: 9025072640326473263, guid: f14343fa6c43c474388c4bc10592343c, type: 3}
+  - gen3: {fileID: 5248155045028023213, guid: 77f6cbf9794f4c34da14946bbc81fcba, type: 3}
+  - gen4: {fileID: 4023127307474906975, guid: 446ff95fba600aa409f84f4e138b330b, type: 3}
+  - gen5: {fileID: 5018701294627472438, guid: 09cf09ec436ea7543a3c2c451ac70c05, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
