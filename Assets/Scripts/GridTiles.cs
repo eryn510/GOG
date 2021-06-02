@@ -263,26 +263,28 @@ public class GridTiles : MonoBehaviour
                     //Same Rank
                     if (player[i].GetComponent<Piece>().rank == enemy[j].GetComponent<Piece>().rank)
                     {
-                        if (player[0].GetComponent<Piece>().isAttack == true && enemy[0].GetComponent<Piece>().isAttack == false)
+                        if(player[i].GetComponent<Piece>().rank == 0 && enemy[j].GetComponent<Piece>().rank == 0)
                         {
-                            deadBlack[0].gameObject.SetActive(true);
-                            enemy[0].gameObject.SetActive(false);
+                            if (player[0].GetComponent<Piece>().isAttack == true && enemy[0].GetComponent<Piece>().isAttack == false)
+                            {
+                                deadBlack[0].gameObject.SetActive(true);
+                                enemy[0].gameObject.SetActive(false);
+                            }
+                            else if (player[0].GetComponent<Piece>().isAttack == false && enemy[0].GetComponent<Piece>().isAttack == true)
+                            {
+                                dead[0].gameObject.SetActive(true);
+                                player[0].gameObject.SetActive(false);
+                            }
                         }
-                        else if (player[0].GetComponent<Piece>().isAttack == false && enemy[0].GetComponent<Piece>().isAttack == true)
-                        {
-                            dead[0].gameObject.SetActive(true);
-                            player[0].gameObject.SetActive(false);
-                        }
+                        
                         else
                         {
                             for (k = 0; k < dead.Length; k++)
                             {
                                 if (dead[k].GetComponent<Piece>().rank == player[i].GetComponent<Piece>().rank)
-                                {
                                     dead[k].gameObject.SetActive(true);
+                                if (deadBlack[k].GetComponent<Piece>().rank == enemy[j].GetComponent<Piece>().rank)
                                     deadBlack[k].gameObject.SetActive(true);
-                                }
-
                             }
                             player[i].gameObject.SetActive(false);
                             enemy[j].gameObject.SetActive(false);
@@ -296,12 +298,16 @@ public class GridTiles : MonoBehaviour
                             //Enemy is not Private
                             if (enemy[j].GetComponent<Piece>().rank != 1)
                             {
-                                enemy[j].gameObject.SetActive(false);
-                                deadBlack[j - 6].gameObject.SetActive(true);
+                                for (k = 0; k < deadBlack.Length; k++)
+                                {
+                                    if (deadBlack[k].GetComponent<Piece>().rank == enemy[j].GetComponent<Piece>().rank)
+                                        deadBlack[k].gameObject.SetActive(true);
+                                }
                                 if (player[i].GetComponent<Piece>().suspectedValue < enemy[j].GetComponent<Piece>().trueRank)
                                 {
                                     player[i].GetComponent<Piece>().suspectedValue = enemy[j].GetComponent<Piece>().trueRank + 1;
                                 }
+                                enemy[j].gameObject.SetActive(false);
                             }
                             //Enemy is Private
                             else
@@ -331,8 +337,12 @@ public class GridTiles : MonoBehaviour
                             else
                             {
                                 player[i].GetComponent<Piece>().suspectedValue = 2;
+                                for (k = 0; k < deadBlack.Length; k++)
+                                {
+                                    if (deadBlack[k].GetComponent<Piece>().rank == enemy[j].GetComponent<Piece>().rank)
+                                        deadBlack[k].gameObject.SetActive(true);
+                                }
                                 enemy[j].gameObject.SetActive(false);
-                                deadBlack[2].gameObject.SetActive(true);
                             }
                         }
                         //Player Rank is lower than Enemy Rank
@@ -352,15 +362,12 @@ public class GridTiles : MonoBehaviour
                             {
                                 player[i].GetComponent<Piece>().suspectedValue = enemy[j].GetComponent<Piece>().trueRank + 1;
                             }
+                            for (k = 0; k < deadBlack.Length; k++)
+                            {
+                                if (deadBlack[k].GetComponent<Piece>().rank == enemy[j].GetComponent<Piece>().rank)
+                                    deadBlack[k].gameObject.SetActive(true);
+                            }
                             enemy[j].gameObject.SetActive(false);
-                            if (j >= 8)
-                                deadBlack[j - 6].gameObject.SetActive(true);
-                            else if (j == 7)
-                                deadBlack[2].gameObject.SetActive(true); //spy dead
-                            else if (j < 7 && j != 0)
-                                deadBlack[1].gameObject.SetActive(true); //priv dead
-                            else if (j == 0)
-                                deadBlack[0].gameObject.SetActive(true); //flag dead
                         }
                     }
                 }
