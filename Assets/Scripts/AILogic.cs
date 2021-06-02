@@ -91,10 +91,7 @@ public class AILogic : MonoBehaviour
     {
         Position holdPos = new Position();
         holdPos = this.getChangedPos(bestBoard);
-        //Debug.Log("PieceValue: " + holdPos.PieceValue + " Position: " + holdPos.Row + ":" + holdPos.Column);
         this.findInControlledList(holdPos);
-        //Debug.Log("Previous Position: " + obj.GetComponent<Piece>().initX + ":" + obj.GetComponent<Piece>().initY);
-        //Debug.Log("Position: " + obj.GetComponent<Piece>().x + ":" + obj.GetComponent<Piece>().y);
     }
 
     public void execute()
@@ -102,16 +99,6 @@ public class AILogic : MonoBehaviour
         BoardState bestBoard = new BoardState();
 
         bestBoard = this.currentBoard.addEvalGetBest();
-        
-        /*
-        Debug.Log("ARRAY OF PIECE Positions");
-        foreach (var item in bestBoard.getPositionList(1))
-        {
-            Debug.Log("PieceValue: " + item.PieceValue + " Position: " + item.Row + ":" + item.Column + "Clone :" + item.CloneIndex);
-        }
-        Debug.Log("BEST MOVE:" + bestBoard.UnitMovement);
-        */
-        Debug.Log("PIECE VALUE:" + bestBoard.getPositionList(0)[0].PieceValue);
 
         changeCorrespondingPos(bestBoard);
         this.setCurrent(bestBoard);

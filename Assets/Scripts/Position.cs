@@ -10,13 +10,13 @@ public class Position
 
     /*{ "Flag", "Spy", "Private", "Sergeant", "2nd Lieutenant", "1st Lieutenant", 
         "Captain", "Major", "Lieutenant Colonel", "Colonel", "One-Star General", 
-        "Two-Star General", "Three-Star General", "Four-Star General", "Five-Star General"} 1 - 15 piece index */
-    private int pieceID = 0; //piece index - 1-15 flag,spy, .. 5 general
+        "Two-Star General", "Three-Star General", "Four-Star General", "Five-Star General"} 0 - 14 piece index */
+    private int pieceID = 0; //piece index - 0-14 flag,spy, .. 5 general
     private int pieceValue = 0; //piece value 1 - 15; 15-spy, 1-flag
-    private int row = -1;
-    private int column = -1;
+    private int row = -1; //default value to avoid 0 row
+    private int column = -1; //default value to avoid 0 column
     private int playerIndex = 0; //0 - player 1, 1 - player 2
-    private int cloneIndex = 0;
+    private int cloneIndex = 0; //clone index mainly used for spies and privates
 
 
     public static Position copyPosition(Position ps1, Position copy)

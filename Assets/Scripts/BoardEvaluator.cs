@@ -59,7 +59,6 @@ public class BoardEvaluator
             computerScore = -WIN_LOSS_VALUE;
             Debug.LogError("Computer Flag at Risk");
         }
-
         //if Human flag is at risk
         BoardState temp2 = new BoardState();
         BoardState.boardCopy(this.boardState, temp2);
@@ -68,7 +67,7 @@ public class BoardEvaluator
             computerScore = WIN_LOSS_VALUE;
             Debug.LogError("Human Flag at Risk");
         }
-
+        //if CPU flag is dead
         BoardState temp3 = new BoardState();
         BoardState.boardCopy(this.boardState, temp3);
         if (this.isFlagDead(temp3, (int)Player.PlayerTwo))
@@ -76,7 +75,7 @@ public class BoardEvaluator
             computerScore = -WIN_LOSS_VALUE * 2;
             Debug.LogWarning("Computer Flag is Dead");
         }
-
+        //if CPU flag is near end
         BoardState temp5 = new BoardState();
         BoardState.boardCopy(this.boardState, temp5);
         if (this.isFlagNearEnd(temp5, (int)Player.PlayerTwo))
@@ -84,7 +83,7 @@ public class BoardEvaluator
             computerScore = WIN_LOSS_VALUE * 2;
             Debug.LogWarning("Computer Flag near the END");
         }
-
+        //if Human flag is near end
         BoardState temp6 = new BoardState();
         BoardState.boardCopy(this.boardState, temp6);
         if (this.isFlagNearEnd(temp6, (int)Player.PlayerOne))
@@ -92,7 +91,7 @@ public class BoardEvaluator
             computerScore = -WIN_LOSS_VALUE * 2;
             Debug.LogWarning("Human Flag near the END");
         }
-
+        //if Human flag is dead
         BoardState temp4 = new BoardState();
         BoardState.boardCopy(this.boardState, temp4);
         if (this.isFlagDead(temp4, (int)Player.PlayerOne))
@@ -109,7 +108,6 @@ public class BoardEvaluator
         Position flagPos = new Position();
         foreach (var item in player == (int)Player.PlayerTwo ? boardState.getPositionList((int)Player.PlayerTwo) : boardState.getPositionList((int)Player.PlayerOne))
         {
-            //Debug.Log(item.PieceID);
             if (item.PieceValue == 1)
             {
                 flagPos = Position.copyPosition(item, flagPos);
@@ -127,7 +125,6 @@ public class BoardEvaluator
     {
         foreach (var item in player == (int)Player.PlayerTwo ? boardState.getPositionList((int)Player.PlayerTwo) : boardState.getPositionList((int)Player.PlayerOne))
         {
-            //Debug.Log("ID: " + item.PieceID);
             if (item.PieceID == 0)
             {
                 return false;
@@ -138,17 +135,6 @@ public class BoardEvaluator
 
     private bool isFlagAtRisk(BoardState boardState, int player)
     {
-        /*
-        Debug.Log("ARRAY OF PIECE Positions");
-        foreach (var item in boardState.getPositionList(1))
-        {
-            Debug.Log("PieceValue: " + item.PieceValue + " Position: " + item.Row + ":" + item.Column);
-        }
-        foreach (var item in boardState.getPositionList(0))
-        {
-            Debug.Log("PieceValue: " + item.PieceValue + " Position: " + item.Row + ":" + item.Column);
-        }
-        */
         Position flagPos = new Position();
         foreach (var item in player == (int)Player.PlayerTwo ? boardState.getPositionList((int)Player.PlayerTwo) : boardState.getPositionList((int)Player.PlayerOne))
         {
@@ -169,11 +155,6 @@ public class BoardEvaluator
         {
             if (Mathf.Abs(item.Row - flagPos.Row) < 2 && Mathf.Abs(item.Column - flagPos.Column) < 2)
             {
-                if (player == (int)Player.PlayerOne)
-                {
-                    //Debug.Log("Human: " + item.Row + ":" + item.Column);
-                    //Debug.Log("CPU: " + flagPos.Row + ":" + flagPos.Column);
-                }
                 return true;
             }
         }
